@@ -22,7 +22,7 @@ public class Planet{
 
 	}  
 
-	private double calcDistance (Planet planet){
+	public double calcDistance (Planet planet){
 		double distancex = planet.x - this.x;
 		double distancey = planet.y - this.y;
 		double distancexcuadrado = distancex * distancex;
@@ -31,6 +31,16 @@ public class Planet{
 
 		return distancetotal;
 	}
+
+		public double calcPairwiseForce (Planet planet){
+		double forcepartone = 9.8 * this.mass * planet.mass;
+		double forcepartwo = calcDistance(planet);
+		double forcetotal = forcepartone / forcepartwo;
+
+		return forcetotal;
+	}
+
+
 
 	
 }
