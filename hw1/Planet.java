@@ -32,13 +32,30 @@ public class Planet{
 		return distancetotal;
 	}
 
-		public double calcPairwiseForce (Planet planet){
-		double forcepartone = 9.8 * this.mass * planet.mass;
+	public double calcPairwiseForce (Planet planet){
+		double forcepartone = 6.67E-11 * this.mass * planet.mass;
 		double forcepartwo = calcDistance(planet);
-		double forcetotal = forcepartone / forcepartwo;
+		double forcepartwocuadrado = forcepartwo * forcepartwo;
+		double forcetotal = forcepartone / forcepartwocuadrado;
 
 		return forcetotal;
 	}
+
+	public double calcPairwiseForceX (Planet planet){
+		double distancex = Math.abs (planet.x - this.x);
+        double forcex = calcPairwiseForce(planet) * (distancex / calcDistance(planet));
+
+        return forcex;
+
+    }
+
+    public double calcPairwiseForceY (Planet planet){
+    	double distancey = Math.abs (planet.y - this.y);
+        double forcey = calcPairwiseForce(planet) * (distancey/ calcDistance(planet));
+
+        return forcey;
+
+    }
 
 
 
