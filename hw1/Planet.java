@@ -9,6 +9,9 @@ public class Planet{
 	double yVelocity;
 	double mass;
 	String img;
+	double xNetForce;
+	double yNetForce;
+
 
 	public Planet(double x, double y, double xVelocity, 
 				  double yVelocity, double mass, String img){
@@ -57,18 +60,17 @@ public class Planet{
 
     }
 
-    public void setNetForce (Planet planet){
-    	double netforcex = calcPairwiseForceX(planet) / this.mass;
-    	double netforcey = calcPairwiseForceY(planet) / planet.mass;
-    	double netforcetotal = netforcey + netforcex;
+    public void setNetForce (Planet[] planet){
 
-    	Planet[] planet;
+    	xNetForce = 0;
+    	yNetForce = 0;
 
     	for(int i=0; i<Planet.length; i++){
-    		if(Planet(i) == Planet){
+    		if(Planet(i) == this){
     			System.out.println("Estas comparando el mismo planeta");
     		}else{
-    			System.out.println("La fuerza es: " + netforcetotal);
+    			yNetForce = yNetForce + this.calcPairwiseForceY(planet[i]);
+    			xNetForce = xNetForce + this.calcPairwiseForceX(planet[i]);			
     		}
     	}
     }
