@@ -57,7 +57,21 @@ public class Planet{
 
     }
 
+    public void setNetForce (Planet planet){
+    	double netforcex = calcPairwiseForceX(planet) / this.mass;
+    	double netforcey = calcPairwiseForceY(planet) / planet.mass;
+    	double netforcetotal = netforcey + netforcex;
 
+    	Planet[] planet;
+
+    	for(int i=0; i<Planet.length; i++){
+    		if(Planet(i) == Planet){
+    			System.out.println("Estas comparando el mismo planeta");
+    		}else{
+    			System.out.println("La fuerza es: " + netforcetotal);
+    		}
+    	}
+    }
 
 	
 }
