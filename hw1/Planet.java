@@ -60,17 +60,17 @@ public class Planet{
 
     }
 
-    public void setNetForce (Planet[] planet){
+    public void setNetForce (Planet[] planets){
 
     	xNetForce = 0;
     	yNetForce = 0;
 
-    	for(int i=0; i<Planet.length; i++){
-    		if(Planet(i) == this){
+    	for(int i=0; i<planets.length; i++){
+    		if(planets[i] == this){
     			System.out.println("Estas comparando el mismo planeta");
     		}else{
-    			yNetForce = yNetForce + this.calcPairwiseForceY(planet[i]);
-    			xNetForce = xNetForce + this.calcPairwiseForceX(planet[i]);			
+    			yNetForce = yNetForce + this.calcPairwiseForceY(planets[i]);
+    			xNetForce = xNetForce + this.calcPairwiseForceX(planets[i]);			
     		}
     	}
     }
