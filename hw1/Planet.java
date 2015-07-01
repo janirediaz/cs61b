@@ -11,6 +11,9 @@ public class Planet{
 	String img;
 	double xNetForce;
 	double yNetForce;
+	double xAccel;
+	double yAccel;
+	
 
 
 	public Planet(double x, double y, double xVelocity, 
@@ -73,6 +76,23 @@ public class Planet{
     			xNetForce = xNetForce + this.calcPairwiseForceX(planets[i]);			
     		}
     	}
+    }
+
+    public void update (double dt){
+
+    	
+    	
+    	xAccel = xNetForce / this.mass;
+    	yAccel = yNetForce / this.mass;
+
+    
+    	xVelocity = xVelocity + dt * xAccel;
+    	yVelocity = yVelocity + dt * yAccel;
+
+    	x = x + dt * xVelocity;
+    	y = y + dt * yVelocity;
+
+   
     }
 
 	
