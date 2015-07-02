@@ -1,14 +1,13 @@
 public class NBody{
 	public static void main(String[] args){
 
-		double T = args[1];
-		double dt = args [2];
-		String filename = args [3];
+		double T = Double.parseDouble(args[0]);
+		double dt = Double.parseDouble(args[1]);
+		String filename = args [2];
 
 		In in = new In(filename);
 
-			
-		}
+
 	}
 
 	
