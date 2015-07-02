@@ -78,6 +78,10 @@ public class Planet{
     	}
     }
 
+    public void draw(){
+    	StdDraw.picture(x,y, img);
+    }
+
     public void update (double dt){
 
     	
