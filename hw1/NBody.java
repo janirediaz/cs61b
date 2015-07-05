@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class NBody{
 	public static void main(String[] args){
 
@@ -6,32 +8,50 @@ public class NBody{
 		String filename = args [2];
 
 		In in = new In(filename);
-		 	in.readInt();
-        	in.readDouble();
+		int numeroPlanetas = in.readInt();
+		double radioUniverso = in.readDouble();
 
-	
-		while(in.hasnext() == true){
-		
+		Planet[] listaPlanetas = new Planet[numeroPlanetas];
+		in.readLine();
+		for(int i=0; i<numeroPlanetas; i++ ){	
+			listaPlanetas[i] = getPlanet(in);
 		}
 
-		for(i=0; i<dt; dt=dt + dt){
-			//Ahora como llamo a los metodos setNetForce, update y draw??
+		StdDraw.setScale(0, radioUniverso);
+
+		for(double i=0; i<T; i=i + dt){
+			for(int j=0; j<listaPlanetas.length; j++){
+				listaPlanetas[j].setNetForce(listaPlanetas);
+				listaPlanetas[j].update(dt);
+				listaPlanetas[j].draw();
+				
+			}
+
+			StdDraw.show(1000);
+
+			
 		}
 
-		public static Planet getPlanet(In in){
+
+	}
+
+	public static Planet getPlanet(In in){
+
+		String planetTokensString = in.readLine();
+		String[] planetTokens = planetTokensString.split(" ");
 
 
-			double x = in.readDouble();
-			double y = in.readDouble();
-			double xVelocity = in.readDouble();
-			double yVelocity = in.readDouble();
-			double xAccel = in.readDouble();
-			double yAccel = in.readDouble();
-			String img = in.readString();
 
+		double x = Double.parseDouble(planetTokens[0]);
+		double y = Double.parseDouble(planetTokens[1]);
+		double xVelocity = Double.parseDouble(planetTokens[2]);
+		double yVelocity = Double.parseDouble(planetTokens[3]);
+		double mass = Double.parseDouble(planetTokens[4]);
+		String img = planetTokens[5];
 
-		}
+		Planet planet = new Planet(x, y, xVelocity, yVelocity, mass, img);
 
+		return planet;
 
 	}
 
