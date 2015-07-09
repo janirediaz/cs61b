@@ -28,6 +28,7 @@ public class NBody{
 			}
 
 			StdDraw.show(1000);
+			StdDraw.clear();
 
 			
 		}
