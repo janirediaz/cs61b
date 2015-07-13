@@ -36,5 +36,6 @@ public class TriangleTest {
 
     public static void main(String[] args) {
       //TODO: RUN TESTS (Look in ArithmeticTest.java main method for help!)
+      jh61b.junit.textui.runClasses(TrangleTest.class);
     }
 }
