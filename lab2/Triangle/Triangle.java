@@ -28,6 +28,16 @@ public class Triangle {
 
     // Return triangle type
     //TODO:  return either "Equilateral", "Isosceles", or "Scalene"
-    return null; //REPLACE THIS LINE
+    if (s1 == s2 && s2 == s3){
+      return "The triangle in Equilateral";
+    }
+    if (s1 == s2 && s1 == s3 && s2 == s3){
+      return "The triangle is Isosceles";
+    }
+    if (s1 != s2 && s1 != s3 && s3!= s2){
+      return "The triangle is Scalene";
+
+    }
+    
   }
 }

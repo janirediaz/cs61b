@@ -22,10 +22,17 @@ public class TriangleTest {
 
     @Test
     public void testEquilateral() {
-      //TODO: FILL IN
+        Triangle t = new Triangle(40, 40, 40);
+        String result = t.triangleType();
+        assertEquals("Equilateral", result);
     }
 
-    //TODO: CREATE MORE TESTS
+    @Test
+    public void testIsosceles(){
+        Triangle t = new Triangle(30, 30, 50);
+        String result = t.triangleType();
+        assertEquals("Isosceles", result);
+    }
 
     public static void main(String[] args) {
       //TODO: RUN TESTS (Look in ArithmeticTest.java main method for help!)
