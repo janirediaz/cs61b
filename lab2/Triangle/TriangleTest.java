@@ -1,8 +1,8 @@
 /*
  * JUnit tests for the Triangle class
  */
-import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Test;
 
 /**
  *
@@ -17,25 +17,39 @@ public class TriangleTest {
     public void testScalene() {
         Triangle t = new Triangle(30, 40, 50);
         String result = t.triangleType();
-        assertEquals("Scalene", result);
+        assertEquals("The triangle is Scalene", result);
     }
 
     @Test
     public void testEquilateral() {
         Triangle t = new Triangle(40, 40, 40);
         String result = t.triangleType();
-        assertEquals("Equilateral", result);
+        assertEquals("The triangle in Equilateral", result);
     }
 
     @Test
     public void testIsosceles(){
         Triangle t = new Triangle(30, 30, 50);
         String result = t.triangleType();
-        assertEquals("Isosceles", result);
+        assertEquals("The triangle is Isosceles", result);
+    }
+
+    @Test
+    public void testNegativeSides(){
+        Triangle t = new Triangle(-10, 10, 20);
+        String result = t.triangleType();
+        assertEquals("At least one length is less than 0!", result);
+    }
+
+    @Test
+    public void testInvalidSides(){
+        Triangle t = new Triangle(5, 8, 3);
+        String result = t.triangleType();
+        assertEquals("InvalidSides", result);
     }
 
     public static void main(String[] args) {
       //TODO: RUN TESTS (Look in ArithmeticTest.java main method for help!)
-      jh61b.junit.textui.runClasses(TrangleTest.class);
+      jh61b.junit.textui.runClasses(TriangleTest.class);
     }
 }

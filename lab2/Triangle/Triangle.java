@@ -23,7 +23,7 @@ public class Triangle {
 
     // Check for side length
     if ((s1 + s2 <= s3) || (s1 + s3 <= s2) || (s2 + s3 <= s1)) {
-      return "The lengths of the triangles do not form a valid triangle!";
+      return "InvalidSides";
     }  
 
     // Return triangle type
@@ -31,13 +31,23 @@ public class Triangle {
     if (s1 == s2 && s2 == s3){
       return "The triangle in Equilateral";
     }
-    if (s1 == s2 && s1 == s3 && s2 == s3){
+
+    if (s1 == s2 || s1 == s3 || s2 == s3){
       return "The triangle is Isosceles";
     }
-    if (s1 != s2 && s1 != s3 && s3!= s2){
+
+    if (s1 != s2 || s1 != s3 || s3!= s2){
       return "The triangle is Scalene";
 
     }
-    
+
+  return triangleType();
+ 
   }
+
+
+
+
+
+
 }
