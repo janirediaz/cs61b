@@ -74,29 +74,6 @@ public class IntList {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   /** DO NOT MODIFY ANYTHING BELOW THIS LINE! In fact, I wouldn't even
     * look below this line since it's likely to confuse you. */
 
