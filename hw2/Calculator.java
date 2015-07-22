@@ -12,8 +12,14 @@ public class Calculator {
      * @return the sum of x and y
      **/
     public int add(int x, int y) {
-        // YOUR CODE HERE
-        return -1;
+        int a,b;
+        do{
+            a = x&y;
+            b = x^y;
+            x = a<<1;
+            y = b;
+        }while(a);
+        return b;
     }
 
     /**
