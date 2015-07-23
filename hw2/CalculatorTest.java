@@ -41,8 +41,20 @@ public class CalculatorTest {
 
     @Test
     public void testDivision(){
-        calculator calculator = new Calculator();
+        Calculator calculator = new Calculator();
         assertEquals(1, calculator.division(2, 2));
+    }
+
+    @Test
+    public void testDivisoresNegativos() {
+         Calculator calculator = new Calculator();
+         assertEquals(-4, calculator.division(8, -4);
+    }
+    
+    @Test
+    public void testDivisorCero() {
+        Calculator calculator = new Calculator();
+        assertEquals("No se puede dividir entre cero", calculator.division(3, 0);
     }
 
 
