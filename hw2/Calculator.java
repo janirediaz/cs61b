@@ -14,6 +14,18 @@ public class Calculator {
     public int add(int x, int y) {
         int resultado;
         resultado = x + y;
+
+    }
+
+    public int sub(int x, int y){
+        int resultado;
+        resultado = x - y;
+    }
+
+    public int div(int x, int y){
+        int resultado;
+        resultado = x / y;
+        
     }
 
     /**
@@ -27,6 +39,7 @@ public class Calculator {
     public int multiply(int x, int y) {
        int resultado;
        resultado = x * y;
+
     }
 
     /**
@@ -40,6 +53,25 @@ public class Calculator {
      **/
     public void saveEquation(String equation, int result) {
         // YOUR CODE HERE
+        public LinkedList(){
+
+            public Node head;
+            public int listCount;
+
+            head = new Node;
+            listCount = 0;
+        }
+
+        public void insert(LinkedList data){
+            Node temp = new Node(data);
+            Node current = head;
+
+            while(current.getNext() != null){
+                current = current.getNext();
+            }
+            current.setNext(temp);
+            listCount++;
+        }
     }
 
     /**
