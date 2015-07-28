@@ -2,6 +2,24 @@ import list.EquationList;
 
 public class Calculator {
     // YOU MAY WISH TO ADD SOME FIELDS
+    IntNode head;
+    int size;
+
+    public SList(){
+        head = null;
+        size = 0;
+    }
+
+    public void insertBack(int v){
+        IntNode p = head;
+        while(p.next != null){
+            p = p.next;
+        }
+
+        p.next = new IntNode(v, null);
+    }
+
+
 
     /**
      * TASK 2: ADDING WITH BIT OPERATIONS
@@ -14,17 +32,20 @@ public class Calculator {
     public int add(int x, int y) {
         int resultado;
         resultado = x + y;
+        Sring suma = "1 + 2";
 
     }
 
     public int sub(int x, int y){
         int resultado;
         resultado = x - y;
+        String resta = "5 - 5";
     }
 
     public int div(int x, int y){
         int resultado;
         resultado = x / y;
+        String division = "2 / 2";
         
     }
 
@@ -39,6 +60,7 @@ public class Calculator {
     public int multiply(int x, int y) {
        int resultado;
        resultado = x * y;
+       String multiplicacion = "2 * 4"
 
     }
 
@@ -53,25 +75,8 @@ public class Calculator {
      **/
     public void saveEquation(String equation, int result) {
         // YOUR CODE HERE
-        public LinkedList(){
-
-            public Node head;
-            public int listCount;
-
-            head = new Node;
-            listCount = 0;
-        }
-
-        public void insert(LinkedList data){
-            Node temp = new Node(data);
-            Node current = head;
-
-            while(current.getNext() != null){
-                current = current.getNext();
-            }
-            current.setNext(temp);
-            listCount++;
-        }
+        this.EquationList = EquationList;
+        
     }
 
     /**
