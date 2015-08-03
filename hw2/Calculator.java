@@ -2,23 +2,7 @@ import list.EquationList;
 
 public class Calculator {
     // YOU MAY WISH TO ADD SOME FIELDS
-    IntNode head;
-    int size;
-
-    public SList(){
-        head = null;
-        size = 0;
-    }
-
-    public void insertBack(int v){
-        IntNode p = head;
-        while(p.next != null){
-            p = p.next;
-        }
-
-        p.next = new IntNode(v, null);
-    }
-
+    public EquationList head;
 
 
     /**
@@ -33,6 +17,8 @@ public class Calculator {
         int resultado;
         resultado = x + y;
         Sring suma = "1 + 2";
+        saveEquation(suma, resultado);
+        return resultado;
 
     }
 
@@ -40,13 +26,16 @@ public class Calculator {
         int resultado;
         resultado = x - y;
         String resta = "5 - 5";
+        saveEquation(resta, resultado);
+        return resultado;
     }
 
     public int div(int x, int y){
         int resultado;
         resultado = x / y;
         String division = "2 / 2";
-        
+        saveEquation(division, resultado);
+        return resultado;
     }
 
     /**
@@ -60,7 +49,9 @@ public class Calculator {
     public int multiply(int x, int y) {
        int resultado;
        resultado = x * y;
-       String multiplicacion = "2 * 4"
+       String multiplicacion = "2 * 4";
+       saveEquation(multiplicacion, resultado);
+       return resultado;
 
     }
 
@@ -75,7 +66,15 @@ public class Calculator {
      **/
     public void saveEquation(String equation, int result) {
         // YOUR CODE HERE
-        this.EquationList = EquationList;
+        EquationList NodeTemp = new EquationList(equation, result);
+
+        this.head = n;
+        while (n.next != null){
+            n = n.next;
+        }
+
+        n.next = new NodeTemp(equation, result);
+        
         
     }
 
