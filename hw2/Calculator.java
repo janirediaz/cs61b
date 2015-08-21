@@ -68,12 +68,22 @@ public class Calculator {
         // YOUR CODE HERE
         EquationList NodeTemp = new EquationList(equation, result);
 
-        this.head = n;
+        int x;
+
+        if(this.head == null){
+            this.head = IntNode(x, null);
+            size = 1;
+            return;
+
+        }
+
+        IntNode n = head;
         while (n.next != null){
             n = n.next;
         }
 
-        n.next = new NodeTemp(equation, result);
+        n.next = new IntNode(x, null);
+        size = size + 1;
         
         
     }
