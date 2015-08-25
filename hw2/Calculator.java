@@ -99,8 +99,12 @@ public class Calculator {
     public void printAllHistory() {
         // YOUR CODE HERE
 
-        while(EquationList != null){
-            System.out.println
+        String result = NodeTemp + " ";
+
+        while( head != null && NodeTemp.next != null){
+            result = result + NodeTemp.toString();
+            
+            System.out.println(NodeTemp.toString());
         }
     }
 
