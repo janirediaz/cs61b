@@ -18,7 +18,7 @@ public class Calculator {
     public int add(int x, int y) {
         int resultado;
         resultado = x + y;
-        Sring suma = "1 + 2";
+        String suma = "1 + 2";
         saveEquation(suma, resultado);
         return resultado;
 
@@ -68,22 +68,22 @@ public class Calculator {
      **/
     public void saveEquation(String equation, int result) {
         // YOUR CODE HERE
-        EquationList NodeTemp = new EquationList(equation, result);
+        EquationList nodeTemp = new EquationList(equation, result, null);
 
 
-        if(this.head == null){
-            this.head = NodeTemp(x, null);
+        if(head == null){
+            head = nodeTemp;
             size = 1;
             return;
 
         }
 
-        NodeTemp n = head;
+        EquationList n = head;
         while (n.next != null){
             n = n.next;
         }
 
-        n.next = new EquationList(x, null);
+        n.next = nodeTemp;
         size = size + 1;
         
         
@@ -98,13 +98,12 @@ public class Calculator {
      **/
     public void printAllHistory() {
         // YOUR CODE HERE
+        EquationList nodeTemp = head;
 
-        String result = NodeTemp + " ";
-
-        while( head != null && NodeTemp.next != null){
-            result = result + NodeTemp.toString();
+        while( head != null && nodeTemp.next != null){
             
-            System.out.println(NodeTemp.toString());
+            
+            System.out.println(nodeTemp.equation);
         }
     }
 
