@@ -116,6 +116,15 @@ public class Calculator {
      **/
     public void printHistory(int n) {
         // YOUR CODE HERE
+        EquationList nodeTemp = head;
+
+        while( head != null && nodeTemp.next != null){
+            for (int i =0; i<size-n; i++){
+                nodeTemp = nodeTemp.next;   
+            }
+
+            System.out.println(nodeTemp.equation);
+        }
     }    
 
     /**
