@@ -3,6 +3,7 @@ import list.EquationList;
 public class Calculator {
     // YOU MAY WISH TO ADD SOME FIELDS
     public EquationList head;
+    public EquationList tail;
     int size;
     
 
@@ -98,13 +99,9 @@ public class Calculator {
      **/
     public void printAllHistory() {
         // YOUR CODE HERE
-        EquationList nodeTemp = head;
 
-        while( head != null && nodeTemp.next != null){
-            
-            
-            System.out.println(nodeTemp.equation);
-        }
+        printHistory(size);
+        
     }
 
     /**
@@ -118,11 +115,9 @@ public class Calculator {
         // YOUR CODE HERE
         EquationList nodeTemp = head;
 
-        while( head != null && nodeTemp.next != null){
-            for (int i =0; i<size-n; i++){
-                nodeTemp = nodeTemp.next;   
-            }
-
+        while( head != null && nodeTemp.next != null && n<size){
+            
+            
             System.out.println(nodeTemp.equation);
         }
     }    
@@ -133,6 +128,15 @@ public class Calculator {
     **/
     public void undoEquation() {
         // YOUR CODE HERE
+        EquationList temp = head;
+        while (temp.next != tail){
+            temp = temp.next;
+        }
+
+        tail = temp;
+        tail.next = null;
+        size--;
+       
     }
 
     /**
@@ -141,6 +145,9 @@ public class Calculator {
      **/
     public void clearHistory() {
         // YOUR CODE HERE
+        head = new EquationList(" ", 0, null);
+        tail = head;
+        size = 0;
     }
 
     /**
