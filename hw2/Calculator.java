@@ -129,8 +129,10 @@ public class Calculator {
     public void undoEquation() {
         // YOUR CODE HERE
         EquationList temp = head;
-        while (temp.next != tail){
+        EquationList palo = temp.next;
+        while (temp.next != null){
             temp = temp.next;
+            palo = temp.next;
         }
 
         tail = temp;
