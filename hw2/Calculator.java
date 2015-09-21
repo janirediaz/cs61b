@@ -114,8 +114,9 @@ public class Calculator {
     public void printHistory(int n) {
         // YOUR CODE HERE
         EquationList nodeTemp = head;
+        int count;
 
-        while( head != null && nodeTemp.next != null && n<size){
+        while( head != null && nodeTemp.next != null && count<n){
             
             
             System.out.println(nodeTemp.equation);
@@ -160,7 +161,17 @@ public class Calculator {
      **/
     public int cumulativeSum() {
         // YOUR CODE HERE
-        return -1;
+        int sum = 0;
+        EquationList e = el;
+
+        if(el != null){
+            while(e != null){
+                sum = sum + e.result;
+                e = e.next;
+            }
+        }
+
+        return sum;
     }
 
     /**
@@ -171,6 +182,15 @@ public class Calculator {
      **/
     public int cumulativeProduct() {
         // YOUR CODE HERE
-        return -1;
+        int product = 1;
+        EquationList e = el;
+
+        if(el != null){
+            while(e != null){
+                product = product * e.result;
+                e = e.next;
+            }
+        }
+        return product;
     }
 }
