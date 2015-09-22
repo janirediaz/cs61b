@@ -114,7 +114,7 @@ public class Calculator {
     public void printHistory(int n) {
         // YOUR CODE HERE
         EquationList nodeTemp = head;
-        int count;
+        int count = 0;
 
         while( head != null && nodeTemp.next != null && count<n){
             
@@ -162,9 +162,9 @@ public class Calculator {
     public int cumulativeSum() {
         // YOUR CODE HERE
         int sum = 0;
-        EquationList e = el;
+        EquationList e = head;
 
-        if(el != null){
+        if(head != null){
             while(e != null){
                 sum = sum + e.result;
                 e = e.next;
@@ -183,9 +183,9 @@ public class Calculator {
     public int cumulativeProduct() {
         // YOUR CODE HERE
         int product = 1;
-        EquationList e = el;
+        EquationList e = head;
 
-        if(el != null){
+        if(head != null){
             while(e != null){
                 product = product * e.result;
                 e = e.next;
