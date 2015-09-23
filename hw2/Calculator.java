@@ -4,7 +4,7 @@ public class Calculator {
     // YOU MAY WISH TO ADD SOME FIELDS
     public EquationList head;
     public EquationList tail;
-    int size;
+    int size = 0;
     
 
 
@@ -114,13 +114,14 @@ public class Calculator {
     public void printHistory(int n) {
         // YOUR CODE HERE
         EquationList nodeTemp = head;
-        int count = 0;
+        
+        while(n > 0){
+            System.out.println(nodeTemp.equation + " = " + nodeTemp.result);
+            nodeTemp = nodeTemp.next;
+            n -= 1;
 
-        while( head != null && nodeTemp.next != null && count<n){
-            
-            
-            System.out.println(nodeTemp.equation);
         }
+        
     }    
 
     /**
@@ -163,14 +164,14 @@ public class Calculator {
         // YOUR CODE HERE
         int sum = 0;
         EquationList e = head;
+        int s = size;
 
-        if(head != null){
-            while(e != null){
-                sum = sum + e.result;
-                e = e.next;
-            }
+        while(s > 0){
+            sum = sum + e.result;
+            s -= 1;
+            e = e.next;
         }
-
+        
         return sum;
     }
 
@@ -184,13 +185,15 @@ public class Calculator {
         // YOUR CODE HERE
         int product = 1;
         EquationList e = head;
+        int s = size;
 
-        if(head != null){
-            while(e != null){
-                product = product * e.result;
-                e = e.next;
-            }
+        
+        while(s > 0){
+            product = product * e.result;
+            s -= 1;
+            e = e.next;
         }
+
         return product;
     }
 }
