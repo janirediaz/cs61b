@@ -5,6 +5,7 @@ public class Calculator {
     public EquationList head;
     public EquationList tail;
     int size = 0;
+   
     
 
 
@@ -68,7 +69,7 @@ public class Calculator {
      * @param result is an integer corresponding to the result of the equation
      **/
     public void saveEquation(String equation, int result) {
-        // YOUR CODE HERE
+        //YOUR CODE HERE
         EquationList nodeTemp = new EquationList(equation, result, null);
 
 
@@ -86,8 +87,7 @@ public class Calculator {
 
         n.next = nodeTemp;
         size = size + 1;
-        
-        
+
     }
 
     /**
@@ -114,11 +114,13 @@ public class Calculator {
     public void printHistory(int n) {
         // YOUR CODE HERE
         EquationList nodeTemp = head;
+        int i = 0;
         
-        while(n > 0){
+        while(nodeTemp != null && (n == -1 || i < n)){
+            if(n == -1 || i == n -1)
             System.out.println(nodeTemp.equation + " = " + nodeTemp.result);
+            i += 1;
             nodeTemp = nodeTemp.next;
-            n -= 1;
 
         }
         
@@ -164,14 +166,15 @@ public class Calculator {
         // YOUR CODE HERE
         int sum = 0;
         EquationList e = head;
-        int s = size;
+        int k = size;
 
-        while(s > 0){
-            sum = sum + e.result;
-            s -= 1;
+        while(k > 0){
+            sum += e.result;
+            k -=1;
             e = e.next;
         }
         
+
         return sum;
     }
 
@@ -185,12 +188,12 @@ public class Calculator {
         // YOUR CODE HERE
         int product = 1;
         EquationList e = head;
-        int s = size;
+        int k = size;
 
         
-        while(s > 0){
+        while(k > 0){
             product = product * e.result;
-            s -= 1;
+            k -= 1;
             e = e.next;
         }
 
