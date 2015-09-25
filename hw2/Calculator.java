@@ -119,8 +119,8 @@ public class Calculator {
         while(nodeTemp != null && (n == -1 || i < n)){
             if(n == -1 || i == n -1)
             System.out.println(nodeTemp.equation + " = " + nodeTemp.result);
-            i += 1;
             nodeTemp = nodeTemp.next;
+            i ++;
 
         }
         
@@ -166,16 +166,18 @@ public class Calculator {
         // YOUR CODE HERE
         int sum = 0;
         EquationList e = head;
-        int k = size;
 
-        while(k > 0){
-            sum += e.result;
-            k -=1;
-            e = e.next;
+        if(head == null){
+            return 0;
+        }else{
+
+            while(e != null){
+                sum = sum + e.result;
+                e = e.next;
+            }
+            return sum;
+
         }
-        
-
-        return sum;
     }
 
     /**
@@ -188,13 +190,13 @@ public class Calculator {
         // YOUR CODE HERE
         int product = 1;
         EquationList e = head;
-        int k = size;
-
         
-        while(k > 0){
-            product = product * e.result;
-            k -= 1;
-            e = e.next;
+        if(head != null){
+        
+            while(e != null){
+                product *= e.result;
+                e = e.next;
+            }
         }
 
         return product;
