@@ -114,13 +114,11 @@ public class Calculator {
     public void printHistory(int n) {
         // YOUR CODE HERE
         EquationList nodeTemp = head;
-        int i = 0;
         
-        while(nodeTemp != null && (n == -1 || i < n)){
-            if(n == -1 || i == n -1)
+        while(nodeTemp != null && n > 0){
             System.out.println(nodeTemp.equation + " = " + nodeTemp.result);
             nodeTemp = nodeTemp.next;
-            i ++;
+            n = n -1;
 
         }
         
@@ -164,20 +162,15 @@ public class Calculator {
      **/
     public int cumulativeSum() {
         // YOUR CODE HERE
+        EquationList nodeTemp = head;
         int sum = 0;
-        EquationList e = head;
-
-        if(head == null){
-            return 0;
-        }else{
-
-            while(e != null){
-                sum = sum + e.result;
-                e = e.next;
-            }
-            return sum;
-
+    
+        while(nodeTemp != null){
+            sum += add(nodeTemp.result, sum);
+            nodeTemp = nodeTemp.next;
         }
+
+        return sum;
     }
 
     /**
