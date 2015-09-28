@@ -20,7 +20,7 @@ public class Calculator {
     public int add(int x, int y) {
         int resultado;
         resultado = x + y;
-        String suma = "1 + 2";
+        String suma = x + " + " + y;
         saveEquation(suma, resultado);
         return resultado;
 
@@ -29,7 +29,7 @@ public class Calculator {
     public int sub(int x, int y){
         int resultado;
         resultado = x - y;
-        String resta = "5 - 5";
+        String resta = x + " - " + y;
         saveEquation(resta, resultado);
         return resultado;
     }
@@ -37,7 +37,7 @@ public class Calculator {
     public int div(int x, int y){
         int resultado;
         resultado = x / y;
-        String division = "2 / 2";
+        String division = x + " / " + y;
         saveEquation(division, resultado);
         return resultado;
     }
@@ -53,7 +53,7 @@ public class Calculator {
     public int multiply(int x, int y) {
        int resultado;
        resultado = x * y;
-       String multiplicacion = "2 * 4";
+       String multiplicacion = x + " * " + y;
        saveEquation(multiplicacion, resultado);
        return resultado;
 
@@ -76,18 +76,17 @@ public class Calculator {
         if(head == null){
             head = nodeTemp;
             size = 1;
-            return;
 
+        }else{
+
+            EquationList n = head;
+            while (n.next != null){
+                n = n.next;
+            }
+
+            n.next = nodeTemp;
+            size = size + 1;
         }
-
-        EquationList n = head;
-        while (n.next != null){
-            n = n.next;
-        }
-
-        n.next = nodeTemp;
-        size = size + 1;
-
     }
 
     /**

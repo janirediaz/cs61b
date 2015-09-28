@@ -25,25 +25,21 @@ public class CalculatorUI {
  
 					if(operation.equals("+")){
 						int result = c.add(x, y);
-						c.saveEquation(x + " + " + y, result);
 						System.out.println(result);
 					}
 
 					if(operation.equals("*")){
 						int result = c.multiply(x, y);
-						c.saveEquation(x + " * " + y, result);
 						System.out.println(result);
 					}
 
 					if(operation.equals("-")){
 						int result = c.sub(x, y);
-						c.saveEquation(x + " - " + y, result);
 						System.out.println(result);
 					}
 
 					if(operation.equals("/")){
 						int result = c.div(x, y);
-						c.saveEquation(x + " / " + y, result);
 						System.out.println(result);
 					}
 			}		
