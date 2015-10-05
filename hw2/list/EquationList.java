@@ -21,4 +21,6 @@ public class EquationList {
         this.result = result;
         this.next = next;
     }
+
+    
 }
