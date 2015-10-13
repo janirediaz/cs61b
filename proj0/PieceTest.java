@@ -53,4 +53,39 @@ public class PieceTest{
 		boolean result = F.isKing();
 		assertFalse(result);
 	}
+
+	@Test
+	public void isShield_Type(){
+
+		Piece F = new Piece(false, null, 0, 0, "shield");
+		boolean result = F.isShield();
+		assertTrue(result);
+	}
+
+	@Test
+	public void isPawn_Type(){
+
+		Piece F = new Piece(false, null, 0, 0, "pawn");
+		boolean result = F.isPawn();
+		assertTrue(result);
+	}
+
+	@Test
+	public void isBomb_Type(){
+
+		Piece F = new Piece(false, null, 0, 0, "bomb");
+		assertTrue(result);
+	}
+
+	@Test
+	public void move_MoveToEmptySpace(){
+
+		Board board = new Board(true);
+		Piece F = new Piece(false, board, 0, 0, "pawn");
+		board.place(F, 0, 0);
+
+		F.move(1, 1);
+		assertEquals(board.pieceAt(1, 1) , F);
+		seertNull(board.pieceAt(0, 0));
+	}
 }
