@@ -43,8 +43,16 @@ public class Piece{
 		return "shield".equals(type);
 	}
 
+	public void move(int x, int y){
+
+	}
+
 	public boolean hasCaptured(){
 		return hasCaptured;
+	}
+
+	public void doneCapturing(){
+		hasCaptured = false;
 	}
 	
 }

@@ -88,4 +88,14 @@ public class PieceTest{
 		assertEquals(board.pieceAt(1, 1) , F);
 		seertNull(board.pieceAt(0, 0));
 	}
+
+	@Test
+	public void move_ToLastRow(){
+		Board board = new Board(true);
+		Piece F = new Piece(true, board, 6, 0, "pawn");
+		board.place(F, 0, 6);
+		F.move(1 ,7);
+		assertEquals(board.pieceAt(1, 7), F);
+		assertTrue(F.isKing());
+	}
 }
