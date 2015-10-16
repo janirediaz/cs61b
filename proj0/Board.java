@@ -3,7 +3,6 @@ package checkers61b;
 public class Board{
 
 	private Piece[][] pieces;
-	private static Coord selectedCoord;
 	private Piece selectedPiece;
 	private int selectedPieceX, selectedPieceY;
 	private boolean hasMoved = false;
@@ -29,7 +28,7 @@ public class Board{
 				}
 
 				for(int j = 0; j < 8; j++){
-					if(i <= 2 || i >= 5) && (i + j) % 2 == 0){
+					if((i <= 2 || i >= 5) && (i + j) % 2 == 0){
 						String type = "peon";
 						if(i == 2 || i == 5)
 							type = "bomba";

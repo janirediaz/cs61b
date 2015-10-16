@@ -35,7 +35,7 @@ public class Piece{
 	}
 
 	public boolean isBomb(){
-		return "bomb".equelas(type);
+		return "bomb".equals(type);
 
 	}
 
@@ -44,7 +44,25 @@ public class Piece{
 	}
 
 	public void move(int x, int y){
+		if(Math.abs(this.x - x) == 1 && Math.abs(this.y - y) == 1){
+			movePiece(x, y);
+		}else{
+			board.remove(());
+			movePiece(x, y);
+			hasCaptured = true;
 
+			if(isBomb()){
+				explode(x, y);
+			}
+		}
+
+	}
+
+	public void movePiece(int x, int y){
+		board.remove(this.x, this,y);
+		this.x = x;
+		this.y = y;
+		board.place(this, this.x, this.y);
 	}
 
 	public boolean hasCaptured(){
