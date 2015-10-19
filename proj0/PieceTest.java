@@ -78,6 +78,13 @@ public class PieceTest{
 	}
 
 	@Test
+	public void IsShield_Null(){
+		Piece F = new Piece(false, null, 0, 0, null);
+		boolean result = F.isShield();
+		assertFalse(result);
+	}
+
+	@Test
 	public void move_MoveToEmptySpace(){
 
 		Board board = new Board(true);
