@@ -43,6 +43,7 @@ public class Piece{
 		return "shield".equals(type);
 	}
 
+/*
 	public void move(int x, int y){
 		if(Math.abs(this.x - x) == 1 && Math.abs(this.y - y) == 1){
 			movePiece(x, y);
@@ -57,7 +58,7 @@ public class Piece{
 		}
 
 	}
-
+*/
 	public void movePiece(int x, int y){
 		board.remove(this.x, this,y);
 		this.x = x;

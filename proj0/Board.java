@@ -12,9 +12,6 @@ public class Board{
 		Board board = new Board(false);
 		StdDrawPlus.setXscale(0, N);
 		StdDrawPlus.setYscale(0, N);
-
-	
-
 	}
 	
 

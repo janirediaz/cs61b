@@ -86,7 +86,7 @@ public class PieceTest{
 
 		F.move(1, 1);
 		assertEquals(board.pieceAt(1, 1) , F);
-		seertNull(board.pieceAt(0, 0));
+		aseertNull(board.pieceAt(0, 0));
 	}
 
 	@Test
