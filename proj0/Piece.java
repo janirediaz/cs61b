@@ -43,22 +43,25 @@ public class Piece{
 		return "shield".equals(type);
 	}
 
-/*
+
 	public void move(int x, int y){
 		if(Math.abs(this.x - x) == 1 && Math.abs(this.y - y) == 1){
 			movePiece(x, y);
 		}else{
-			board.remove(());
+			board.remove((x + this.x)/2, (y + this.y)/2);
 			movePiece(x, y);
 			hasCaptured = true;
 
-			if(isBomb()){
+			if(isBomb())
 				explode(x, y);
-			}
+			
 		}
 
+		if((side() == 0 && y == 7) || (side() == 1 && y == 0))
+			this.isKing = true;
+
 	}
-*/
+
 	public void movePiece(int x, int y){
 		board.remove(this.x, this,y);
 		this.x = x;
