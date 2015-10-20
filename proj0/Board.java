@@ -3,9 +3,20 @@ package checkers61b;
 public class Board{
 
 	private Piece[][] pieces;
+	private int currentSide = 0;
 	private Piece selectedPiece;
 	private int selectedPieceX, selectedPieceY;
 	private boolean hasMoved = false;
+	private static Coord selectedCoord;
+
+	private class Coord{
+		public int x;
+		public int y;
+		public Coord(int x, int y){
+			this.x = x;
+			this.y = y;
+		}
+	}
 
 	public static void main(String[] args) {
 		int N = 8;
@@ -76,4 +87,34 @@ public class Board{
 			hasMoved = true;
 		}
 	}
+
+	public void place(Piece P, int x, int y){
+		if(!inBounds(x,y))
+			return;
+		pieces[x][y] = p;
+	}
+
+	public Piece remove(int x, int y){
+		if(!inBounds(x,y)){
+			System.out.println("Can´t remove, piece out of bounds");
+		}
+
+		Piece p = pieceAt(x, y);
+
+		if(p == null){
+			System.out.println("No piece to remove");
+			return null;
+		}else{
+			pieces[x][y] = null;
+			return p;
+		}
+	}
+
+	public boolean canEndTurn(){
+		return hasMoved;
+	}
+
+
+
+
 }
