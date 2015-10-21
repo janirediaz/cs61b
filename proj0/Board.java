@@ -71,6 +71,21 @@ public class Board{
 		boolean result = false;
 		Piece piece = pieceAt(x, y);
 
+		if(selectedPiece == null || (selectedPiece != null && !hasMoved && !selectedPiece.equals(piece))){
+			if(piece != null && piece.side() == currentSide){
+				result = true;
+			}
+
+			if(selectedPiece != null){
+				if(selectedPiece.isKing()){
+					result = canMoveOrCapture(x, y, piece, 0);
+					result = canMoveOrCapture(x, y, piece, 1);
+				}else{
+					result = canMoveOrCapture(x, y, result, piece, currentSide);
+				}
+			}
+		}
+
 		
 		
 	}
@@ -112,6 +127,24 @@ public class Board{
 
 	public boolean canEndTurn(){
 		return hasMoved;
+	}
+
+	public String winner(){
+		return null;
+	}
+
+	public void endTurn(){
+		hasMoved = false;
+		selectedPiece = null;
+		selectedCoord = null;
+	}
+
+	private boolean inBounds(int x, int y){
+		if(x >= 8 || x < 0 || y >=8 || y < 0){
+			return false;
+		}else{
+			return true;
+		}
 	}
 
 
