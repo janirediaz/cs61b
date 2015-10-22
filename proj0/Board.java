@@ -23,6 +23,21 @@ public class Board{
 		Board board = new Board(false);
 		StdDrawPlus.setXscale(0, N);
 		StdDrawPlus.setYscale(0, N);
+
+		while(true){
+			drawBoard(board, selectedCoord);
+			if(StdDrawPlus.mousePressed()){
+				int x = StdDrawPlus.mouseX();
+				int y = StdDrawPlus.mouseY();
+
+				if(board.canSelect(x, y)){
+					board.select(x, y);
+					selectedCoord = board.new Coord(x, y);
+				}
+			}
+
+			
+		}
 	}
 	
 
@@ -86,8 +101,30 @@ public class Board{
 			}
 		}
 
+		if(selectedPiece != null && hasMoved){
+			if(selectedPiece.isKing()){
+				result = canMoveOrCapture(x, y, result, piece, 0);
+				result = canMoveOrCapture(x, y, result, piece, 1);
+			}else{
+				result = canCapture(x, y, result, piece, currentSide);
+			}
+		}
+
+		return result;
+
 		
-		
+	}
+
+	public int getDirection(int side){
+		int direction;
+		if(side == 0){
+			direction = 1;
+		}else{
+			direction = -1
+		}
+
+		return direction;
+
 	}
 
 	public void select(int x, int y){
