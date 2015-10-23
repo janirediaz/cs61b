@@ -35,6 +35,16 @@ public class Board{
 					selectedCoord = board.new Coord(x, y);
 				}
 			}
+			if(StdDrawPlus.isSpacePressed()){
+				if(board.hasMoved){
+					board.endTurn();
+				}
+			}
+			if(StdDrawPlus.isNPressed()){
+				board = new Board(false);
+			}
+
+			StdDrawPlus.show(100);
 
 			
 		}
@@ -181,6 +191,22 @@ public class Board{
 			return false;
 		}else{
 			return true;
+		}
+	}
+
+	private static void drawBoard(Board b, Coord c){
+		for(int i = 0; i < 8; i++){
+			for(int j = 0; j < 8; j++){
+				if((i + j) % 2 == 0){
+					if(c != null && c == i && c == j){
+						StdDrawPlus.setPenColor(StdDrawPlus.WHITE);
+					}else{
+						StdDrawPlus.setPenColor(StdDrawPlus.GREY);
+					}else{
+						StdDrawPlus.setPenColor(StdDrawPlus.RED);
+					}
+				}
+			}
 		}
 	}
 
