@@ -68,7 +68,7 @@ public class Board{
 						if(i == 1 || i == 6)
 							type = "escudo";
 
-						pieces[j][i] = new Piece(isFire, j, i, type);
+						pieces[j][i] = new Piece(isFire, this, j, i, type);
 
 					}
 
@@ -194,6 +194,21 @@ public class Board{
 		}
 	}
 
+	private boolean canMoveOrCapture(int x, int y, boolean result, Piece piece, int side){
+		int direction = getDirection(side);
+		if(piece == null && Math.abs(x - selectedPieceX) == 1 && y - selectedPieceY == 1){
+			result = true;
+		}
+
+		result = canCapture(x, y, result, piece, side);
+		return result;
+	}
+
+	private boolean canCapture(int x, int y, boolean result, Piece piece, int side){
+		int direction = getDirection(side);
+		if(piece == null && Math.abs(x - selectedPieceX) == )
+	}
+
 	private static void drawBoard(Board b, Coord c){
 		for(int i = 0; i < 8; i++){
 			for(int j = 0; j < 8; j++){
@@ -204,6 +219,29 @@ public class Board{
 						StdDrawPlus.setPenColor(StdDrawPlus.GREY);
 					}else{
 						StdDrawPlus.setPenColor(StdDrawPlus.RED);
+					}
+
+					Piece piece = b.pieceAt(i, j);
+					if(piece != null){
+						String fileName = "img/";
+						if(piece.isBomb()){
+							fileName = "bomb";
+						}else if(piece.isShield()){
+							fileName = "shield";
+						}else{
+							fileName = "pawn";
+						}
+
+						if(piece.isFire()){
+							fileName = "fire";
+						}else{
+							fileName = "water";
+						}
+
+						if(piece.isKing()){
+							fileName = "crowned";
+						}
+
 					}
 				}
 			}
