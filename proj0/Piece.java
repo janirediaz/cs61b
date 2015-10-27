@@ -52,14 +52,24 @@ public class Piece{
 			movePiece(x, y);
 			hasCaptured = true;
 
-			if(isBomb())
+			if(isBomb()){
 				explode(x, y);
-			
+			}
 		}
 
-		if((side() == 0 && y == 7) || (side() == 1 && y == 0))
+		if((side() == 0 && y == 7) || (side() == 1 && y == 0)){
 			this.isKing = true;
+		}
 
+	}
+
+	private void explode(int x, int y){
+		for(int i = 0; i < 4; i++){
+			Piece piece = board.pieceAt(x, y);
+			if(piece != null && !piece.isShield()){
+				board.remove(x, y);
+			}
+		}
 	}
 
 	public void movePiece(int x, int y){

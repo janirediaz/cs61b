@@ -79,6 +79,19 @@ public class Board{
 
 	}
 
+	public void selectPiece(int x, int y){
+		if(selectedPiece == null || (pieceAt(x, y) != null && !hasMoved)){
+			selectedPiece = pieceAt(x, y);
+			selectedPieceX = x;
+			selectedPieceY = y;
+		}else{
+			selectedPiece.move(x, y);
+			selectedPieceX = x;
+			selectedPieceY = y;
+			hasMoved = true;
+		}
+	}
+
 	public Piece pieceAt(int x, int y){
 		if(!inBounds(x, y)){
 			return null;
