@@ -238,28 +238,70 @@ public class Board{
 					if(piece != null){
 						String fileName = "img/";
 						if(piece.isBomb()){
-							fileName = "bomb";
+							fileName += "bomb";
 						}else if(piece.isShield()){
-							fileName = "shield";
+							fileName += "shield";
 						}else{
-							fileName = "pawn";
+							fileName += "pawn";
 						}
 
 						if(piece.isFire()){
-							fileName = "fire";
+							fileName += "fire";
 						}else{
-							fileName = "water";
+							fileName += "water";
 						}
 
 						if(piece.isKing()){
-							fileName = "crowned";
+							fileName += "crowned";
 						}
+
+						fileName += ".png";
+						StdDrawPlus.picture(i, j, fileName, 1, 1);
 
 					}
 				}
 			}
 		}
 	}
+
+	public boolean canSelectPiece(int x, int y){
+
+		if(!inBounds(x, y))
+			return false;
+
+		boolean result = false;
+		Piece piece = pieceAt(x, y);
+
+		if(selectedPiece == null || (selectedPiece != null && !hasMoved && !selectedPiece.equals(piece))){
+			if(piece != null && piece.side() == currentSide){
+				result = true;
+			}
+
+			if(selectedPiece != null){
+				if(selectedPiece.isKing()){
+					result = canMoveOrCapture(x, y, piece, 0);
+					result = canMoveOrCapture(x, y, piece, 1);
+				}else{
+					result = canMoveOrCapture(x, y, result, piece, currentSide);
+				}
+			}
+		}
+
+		if(selectedPiece != null && hasMoved){
+			if(selectedPiece.isKing()){
+				result = canMoveOrCapture(x, y, result, piece, 0);
+				result = canMoveOrCapture(x, y, result, piece, 1);
+			}else{
+				result = canCapture(x, y, result, piece, currentSide);
+			}
+		}
+
+		return result;
+
+		
+	}
+
+
 
 
 
