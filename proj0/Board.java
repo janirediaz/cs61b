@@ -62,11 +62,11 @@ public class Board{
 
 				for(int j = 0; j < 8; j++){
 					if((i <= 2 || i >= 5) && (i + j) % 2 == 0){
-						String type = "peon";
+						String type = "pawn";
 						if(i == 2 || i == 5)
-							type = "bomba";
+							type = "bomb";
 						if(i == 1 || i == 6)
-							type = "escudo";
+							type = "shield";
 
 						pieces[j][i] = new Piece(isFire, this, j, i, type);
 
@@ -79,19 +79,7 @@ public class Board{
 
 	}
 
-	public void selectPiece(int x, int y){
-		if(selectedPiece == null || (pieceAt(x, y) != null && !hasMoved)){
-			selectedPiece = pieceAt(x, y);
-			selectedPieceX = x;
-			selectedPieceY = y;
-		}else{
-			selectedPiece.move(x, y);
-			selectedPieceX = x;
-			selectedPieceY = y;
-			hasMoved = true;
-		}
-	}
-
+	
 	public Piece pieceAt(int x, int y){
 		if(!inBounds(x, y)){
 			return null;
@@ -200,7 +188,7 @@ public class Board{
 	}
 
 	private boolean inBounds(int x, int y){
-		if(x >= 8 || x < 0 || y >=8 || y < 0){
+		if(x >= 8 || x < 0 || y >=8 || y < 0 || (x+y)%2 != 0){
 			return false;
 		}else{
 			return true;
@@ -209,7 +197,7 @@ public class Board{
 
 	private boolean canMoveOrCapture(int x, int y, boolean result, Piece piece, int side){
 		int direction = getDirection(side);
-		if(piece == null && Math.abs(x - selectedPieceX) == 1 && y - selectedPieceY == 1){
+		if(piece == null && Math.abs(x - selectedPieceX) == 1 && y - selectedPieceY == 1 * direction){
 			result = true;
 		}
 
@@ -219,7 +207,14 @@ public class Board{
 
 	private boolean canCapture(int x, int y, boolean result, Piece piece, int side){
 		int direction = getDirection(side);
-		if(piece == null && Math.abs(x - selectedPieceX) == )
+		if(piece == null && Math.abs(x - selectedPieceX) == 2 && y - selectedPieceY == 2 * direction){
+			Piece captureCandidate = pieceAt((x + selectedPieceX)/2, (y + selectedPieceY)/2);
+			if(captureCandidate != null && captureCandidate.side() != currentSide){
+				result = true;
+			}
+			
+
+		return result;
 	}
 
 	private static void drawBoard(Board b, Coord c){
@@ -264,46 +259,5 @@ public class Board{
 		}
 	}
 
-	public boolean canSelectPiece(int x, int y){
-
-		if(!inBounds(x, y))
-			return false;
-
-		boolean result = false;
-		Piece piece = pieceAt(x, y);
-
-		if(selectedPiece == null || (selectedPiece != null && !hasMoved && !selectedPiece.equals(piece))){
-			if(piece != null && piece.side() == currentSide){
-				result = true;
-			}
-
-			if(selectedPiece != null){
-				if(selectedPiece.isKing()){
-					result = canMoveOrCapture(x, y, piece, 0);
-					result = canMoveOrCapture(x, y, piece, 1);
-				}else{
-					result = canMoveOrCapture(x, y, result, piece, currentSide);
-				}
-			}
-		}
-
-		if(selectedPiece != null && hasMoved){
-			if(selectedPiece.isKing()){
-				result = canMoveOrCapture(x, y, result, piece, 0);
-				result = canMoveOrCapture(x, y, result, piece, 1);
-			}else{
-				result = canCapture(x, y, result, piece, currentSide);
-			}
-		}
-
-		return result;
-
-		
-	}
-
-
-
-
-
-
+	
 }
