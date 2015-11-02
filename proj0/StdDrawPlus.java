@@ -1,3 +1,5 @@
+package checkers61b;
+
 /*************************************************************************
  *  Compilation:  javac StdDrawPlus.java
  *  Execution:    java StdDrawPlus

@@ -73,7 +73,7 @@ public class Piece{
 	}
 
 	public void movePiece(int x, int y){
-		board.remove(this.x, this,y);
+		board.remove(this.x, this.y);
 		this.x = x;
 		this.y = y;
 		board.place(this, this.x, this.y);

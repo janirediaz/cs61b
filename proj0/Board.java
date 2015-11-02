@@ -27,8 +27,8 @@ public class Board{
 		while(true){
 			drawBoard(board, selectedCoord);
 			if(StdDrawPlus.mousePressed()){
-				int x = StdDrawPlus.mouseX();
-				int y = StdDrawPlus.mouseY();
+				int x = (int) StdDrawPlus.mouseX();
+				int y = (int)StdDrawPlus.mouseY();
 
 				if(board.canSelect(x, y)){
 					board.select(x, y);
@@ -104,8 +104,8 @@ public class Board{
 
 			if(selectedPiece != null){
 				if(selectedPiece.isKing()){
-					result = canMoveOrCapture(x, y, piece, 0);
-					result = canMoveOrCapture(x, y, piece, 1);
+					result = canMoveOrCapture(x, y, result, piece, 0);
+					result = canMoveOrCapture(x, y, result, piece, 1);
 				}else{
 					result = canMoveOrCapture(x, y, result, piece, currentSide);
 				}
@@ -223,7 +223,7 @@ public class Board{
 					if(c != null && c.x == i && c.y == j)
 						StdDrawPlus.setPenColor(StdDrawPlus.WHITE);
 					else
-						StdDrawPlus.setPenColor(StdDrawPlus.GREY);
+						StdDrawPlus.setPenColor(StdDrawPlus.GRAY);
 				}
 						StdDrawPlus.setPenColor(StdDrawPlus.RED);
 						StdDrawPlus.filledSquare(i + .5, j+ .5, .5);
