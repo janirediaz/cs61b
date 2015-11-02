@@ -131,7 +131,7 @@ public class Board{
 		if(side == 0){
 			direction = 1;
 		}else{
-			direction = -1
+			direction = -1;
 		}
 
 		return direction;
@@ -212,8 +212,7 @@ public class Board{
 			if(captureCandidate != null && captureCandidate.side() != currentSide){
 				result = true;
 			}
-			
-
+		}
 		return result;
 	}
 
@@ -221,40 +220,41 @@ public class Board{
 		for(int i = 0; i < 8; i++){
 			for(int j = 0; j < 8; j++){
 				if((i + j) % 2 == 0){
-					if(c != null && c == i && c == j){
+					if(c != null && c.x == i && c.y == j)
 						StdDrawPlus.setPenColor(StdDrawPlus.WHITE);
-					}else{
+					else
 						StdDrawPlus.setPenColor(StdDrawPlus.GREY);
-					}else{
+				}
 						StdDrawPlus.setPenColor(StdDrawPlus.RED);
-					}
+						StdDrawPlus.filledSquare(i + .5, j+ .5, .5);
+					
 
 					Piece piece = b.pieceAt(i, j);
 					if(piece != null){
 						String fileName = "img/";
-						if(piece.isBomb()){
+						if(piece.isBomb())
 							fileName += "bomb";
-						}else if(piece.isShield()){
+						else if(piece.isShield())
 							fileName += "shield";
-						}else{
+						else
 							fileName += "pawn";
-						}
+						
 
-						if(piece.isFire()){
+						if(piece.isFire())
 							fileName += "fire";
-						}else{
+						else
 							fileName += "water";
-						}
+						
 
-						if(piece.isKing()){
+						if(piece.isKing())
 							fileName += "crowned";
-						}
+						
 
 						fileName += ".png";
-						StdDrawPlus.picture(i, j, fileName, 1, 1);
+						StdDrawPlus.picture(i + .5, j + .5, fileName, 1, 1);
 
 					}
-				}
+				
 			}
 		}
 	}
