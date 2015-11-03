@@ -9,15 +9,6 @@ public class Board{
 	private boolean hasMoved = false;
 	private static Coord selectedCoord;
 
-	private class Coord{
-		public int x;
-		public int y;
-		public Coord(int x, int y){
-			this.x = x;
-			this.y = y;
-		}
-	}
-
 	public static void main(String[] args) {
 		int N = 8;
 		Board board = new Board(false);
@@ -51,8 +42,19 @@ public class Board{
 	}
 	
 
+	private class Coord{
+		public int x;
+		public int y;
+		public Coord(int x, int y){
+			this.x = x;
+			this.y = y;
+		}
+	}
+
+	
+
 	public Board(boolean shouldBeEmpty){
-		pieces = new Pieces[8][8];
+		pieces = new Piece[8][8];
 		if(!shouldBeEmpty){
 			boolean isFire = true;
 			for(int i = 0; i < 8; i++){
@@ -151,7 +153,7 @@ public class Board{
 		}
 	}
 
-	public void place(Piece P, int x, int y){
+	public void place(Piece p, int x, int y){
 		if(!inBounds(x,y))
 			return;
 		pieces[x][y] = p;
