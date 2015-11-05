@@ -1,10 +1,8 @@
-package checkers61b.test;
-
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import checkers61b.Board;
-import checkers61b.Piece;
+import checkers61b;
+import checkers61b;
 
 public class PieceTest{
 

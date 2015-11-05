@@ -19,7 +19,7 @@ public class Board{
 			drawBoard(board, selectedCoord);
 			if(StdDrawPlus.mousePressed()){
 				int x = (int) StdDrawPlus.mouseX();
-				int y = (int)StdDrawPlus.mouseY();
+				int y = (int) StdDrawPlus.mouseY();
 
 				if(board.canSelect(x, y)){
 					board.select(x, y);
@@ -233,7 +233,7 @@ public class Board{
 
 					Piece piece = b.pieceAt(i, j);
 					if(piece != null){
-						String fileName = "img/";
+						String fileName = "img\\";
 						if(piece.isBomb())
 							fileName += "bomb";
 						else if(piece.isShield())
@@ -243,13 +243,11 @@ public class Board{
 						
 
 						if(piece.isFire())
-							fileName += "fire";
+							fileName += "-fire";
+						else if(piece.isKing())
+							fileName += "-crowned";
 						else
-							fileName += "water";
-						
-
-						if(piece.isKing())
-							fileName += "crowned";
+							fileName += "-water";
 						
 
 						fileName += ".png";
