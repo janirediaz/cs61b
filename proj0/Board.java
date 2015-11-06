@@ -184,7 +184,9 @@ public class Board{
 	}
 
 	public void endTurn(){
+		 
 		hasMoved = false;
+		selectedPiece.doneCapturing();
 		selectedPiece = null;
 		selectedCoord = null;
 	}
@@ -225,11 +227,11 @@ public class Board{
 					if(c != null && c.x == i && c.y == j)
 						StdDrawPlus.setPenColor(StdDrawPlus.WHITE);
 					else
-						StdDrawPlus.setPenColor(StdDrawPlus.GRAY);
+						StdDrawPlus.setPenColor(StdDrawPlus.GRAY);			
 				}
+				else
 						StdDrawPlus.setPenColor(StdDrawPlus.RED);
-						StdDrawPlus.filledSquare(i + .5, j+ .5, .5);
-					
+                		StdDrawPlus.filledSquare(i + .5, j + .5, .5);	
 
 					Piece piece = b.pieceAt(i, j);
 					if(piece != null){
