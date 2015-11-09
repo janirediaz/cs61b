@@ -184,7 +184,7 @@ public class Board{
 	}
 
 	public void endTurn(){
-		 
+
 		hasMoved = false;
 		selectedPiece.doneCapturing();
 		selectedPiece = null;
@@ -246,10 +246,10 @@ public class Board{
 
 						if(piece.isFire())
 							fileName += "-fire";
-						else if(piece.isKing())
-							fileName += "-crowned";
 						else
 							fileName += "-water";
+						if(piece.isKing())
+							fileName += "-crowned";
 						
 
 						fileName += ".png";

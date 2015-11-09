@@ -64,12 +64,15 @@ public class Piece{
 	}
 
 	private void explode(int x, int y){
-		for(int i = 0; i < 4; i++){
-			Piece piece = board.pieceAt(x, y);
-			if(piece != null && !piece.isShield()){
-				board.remove(x, y);
-			}
+		int atx, aty;
+		
+		for(int i = 0; i < 4; i += 1){		
+			Piece piece = board.pieceAt(atx, aty);
+			if(piece != null && !piece.isShield())
+				board.remove(atx, aty);
 		}
+		
+		board.remove(x, y);
 	}
 
 	public void movePiece(int x, int y){
