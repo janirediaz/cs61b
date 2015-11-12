@@ -66,7 +66,9 @@ public class Piece{
 	private void explode(int x, int y){
 		int atx, aty;
 		
-		for(int i = 0; i < 4; i += 1){		
+		for(int i = 0; i < 4; i += 1){
+			atx = i < 2 ? x - 1 : x + 1;
+			aty = i % 2 == 0 ? y - 1 : y + 1;			
 			Piece piece = board.pieceAt(atx, aty);
 			if(piece != null && !piece.isShield())
 				board.remove(atx, aty);

@@ -184,6 +184,7 @@ public class Board{
 	}
 
 	public void endTurn(){
+		currentSide = currentSide ^ 1;
 
 		hasMoved = false;
 		selectedPiece.doneCapturing();
