@@ -45,12 +45,26 @@ public class SortedComparableList {
      *  The first element, which is in location 0, is the 0th element.
      *  Assume i takes on the values [0, length of list - 1]. */
     public Comparable get(int i) {
-        return null; // REPLACE THIS LINE WITH YOUR SOLUTION
+        if (head == null || i == 0) {
+            //edge cases
+            return head;
+        }
+        else {
+            SortedComparableList curr = this;
+            while (curr.tail != null && i != 0) {
+                curr = curr.tail;
+                i--;
+            }
+            return curr.head;
+        }
     }
-
     /** Adds every item in THAT to this list. */
     public void extend(SortedComparableList that) {
-        // REPLACE THIS LINE WITH YOUR SOLUTION
+        SortedComparableList curr = that;
+        while (curr != null) {
+            insert(curr.head);
+            curr = curr.tail;
+        }
     }
 
     /** Returns a list consisting of the elements of L starting from
@@ -59,7 +73,12 @@ public class SortedComparableList {
       *
       * This method should NOT modify L. */
     public static SortedComparableList subTail(SortedComparableList L, int start) {
-        return null; // REPLACE THIS LINE WITH YOUR SOLUTION
+        if (L == null || start == 0) {
+            return L;
+        }
+        else {
+            return subTail(L.tail, start-1);
+        }
     }
 
     /** Returns the sublist consisting of LEN items from list L,
