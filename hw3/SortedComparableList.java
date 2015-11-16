@@ -88,12 +88,23 @@ public class SortedComparableList {
      *  Assume START and END are >= 0.
      */
     public static SortedComparableList sublist(SortedComparableList L, int start, int len) {
-        return null; // REPLACE THIS LINE WITH YOUR SOLUTION
+        if (len == 0) {
+            return null;
+        }else if (start > 0) {
+            return sublist(L.tail, start - 1, len);
+        }
+        return new SortedComparableList(L.head, sublist(L.tail, 0, len - 1));
     }
 
     /** Removes items from L at position len+1 and later. */
     public static void expungeTail(SortedComparableList L, int len) {
-        // REPLACE THIS LINE WITH YOUR SOLUTION
+        if (L == null) {
+            return;
+        }else if (len == 0) {
+            L.tail = null;
+            return;
+        }
+        expungeTail(L.tail, len - 1);
     }
 
     /**
