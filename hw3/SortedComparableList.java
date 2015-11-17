@@ -119,9 +119,23 @@ public class SortedComparableList {
      *  For example, if the input list is [ 0 0 0 0 1 1 3 3 3 4 ], the
      *  output list is [ 0 1 3 4 ].
      **/
-    public void squish() {
-        // REPLACE THIS LINE WITH YOUR SOLUTION
+     public void squish() {
+        if (tail != null) {
+            SortedComparableList prev = this;
+            SortedComparableList curr = tail;
+            while (curr != null) {
+                if (prev.head.equals(curr.head)) {
+                    prev.tail = curr.tail;
+                    curr = prev.tail;
+                }
+                else {
+                    prev = prev.tail;
+                    curr = prev.tail;
+                }
+            }
+        }
     }
+
 
     /** Duplicates each Comparable so that for every original
      *  Comparable, there will end up being two consecutive Comparables.
