@@ -151,7 +151,11 @@ public class SortedComparableList {
      *  duplicate.
      **/
     public void twin() {
-        // REPLACE THIS LINE WITH YOUR SOLUTION
+        SortedComparableList prev = this;
+        while (prev != null) {
+            prev.tail = new SortedComparableList(prev.head, prev.tail);
+            prev = prev.tail.tail;
+        }
     }
 
     /** Returns NULL if no cycle exists, else returns cycle location. */
