@@ -40,7 +40,12 @@ public class ApplicableIntList{
      *  The first element, which is in location 0, is the 0th element.
      *  Assume i takes on the values [0, length of list - 1]. */
     public int get(int i) {
-        // REPLACE THIS LINE WITH YOUR SOLUTION
+        ApplicableIntList curr = this;
+        while (curr.tail != null && i != 0) {
+            curr = curr.tail;
+            i--;
+        }
+        return curr.head;
     }
 
     /** Applies the function f to every item in this list. */
