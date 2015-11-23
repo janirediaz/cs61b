@@ -50,7 +50,19 @@ public class ApplicableIntList{
 
     /** Applies the function f to every item in this list. */
     public void apply(IntUnaryFunction f) {
-        // REPLACE THIS LINE WITH YOUR SOLUTION
+        ApplicableIntList curr = this;
+        while (curr != null) {
+            curr.head = f.apply(curr.head);
+            curr = curr.tail;
+        }
+        ApplicableIntList newList = new ApplicableIntList(get(0), null);
+        curr = this.tail;
+        while (curr != null) {
+            newList.insert(curr.head);
+            curr = curr.tail;
+        }
+        head = newList.head;
+        tail = newList.tail;
     }
 
     /** Returns NULL if no cycle exists, else returns cycle location. */
