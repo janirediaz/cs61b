@@ -22,9 +22,9 @@ public class Plip extends Creature {
     /** creates plip with energy equal to E. */
     public Plip(double e) {
         super("plip");
-        r = 0;
+        r = 99;
         g = 0;
-        b = 0;
+        b = 76;
         energy = e;
     }
 
@@ -41,7 +41,7 @@ public class Plip extends Creature {
      *  that you get this exactly correct.
      */
     public Color color() {
-        g = 63;
+        g = (int)(96 * energy + 63);
         return color(r, g, b);
     }
 
@@ -54,11 +54,19 @@ public class Plip extends Creature {
      *  private static final variable. This is not required for this lab.
      */
     public void move() {
+        if(energy > 0.15){
+            energy = energy - 0.15;
+        }
     }
 
 
     /** Plips gain 0.2 energy when staying due to photosynthesis. */
     public void stay() {
+        if(energy + 0.2 > 2){
+            energy = 2;
+        }else{
+            energy = energy + 0.2;
+        }
     }
 
     /** Plips and their offspring each get 50% of the energy, with none
@@ -66,7 +74,8 @@ public class Plip extends Creature {
      *  Plip.
      */
     public Plip replicate() {
-        return this;
+        energy = energy / 2;
+        return new Plip(energy);
     }
 
     /** Plips take exactly the following actions based on NEIGHBORS:
