@@ -30,12 +30,67 @@ import java.util.List;
     }
 
     /** creates a plip with energy equal to 1. */
-    public Plip() {
+    public Clorus() {
         this(1);
     }
 
      /** Should return a color with red = 34, blue = 0, and green = 231.
      */
+
+     public Color color(){
+        b = (int)(10 * energy + 120);
+        if(b > 231){
+            b = 231;
+        }
+        return color(r, g, b);
+     }
+
+     /** Eat an available Plip. */
+     public void attack(Creature c){
+        energy = energy + c.energy();
+     }
+
+      /** Cloruses should lose 0.3 units of energy when moving. If you want to
+     *  to avoid the magic number warning, you'll need to make a
+     *  private static final variable. This is not required for this lab.
+     */
+
+      public void move(){
+        energy = energy - 0.2;
+      }
+
+      /** Cloruses lose 0.1 units of energy when staying due to boredom. */
+
+      public void stay(){
+        energy = energy - 0.1;
+      }
+
+      /** Cloruses and their offspring each get 50% of the energy, with none
+     *  lost to the process. Now that's efficiency! Returns a baby
+     *  Clorus.
+     */
+
+      public Clorus replicate(){
+        energy = energy / 2;
+        return new Clorus(energy);
+      }
+
+      /** Cloruses take exactly the following actions based on NEIGHBORS:
+     *  1. If no empty adjacent spaces, STAY.
+     *  2. Otherwise, if any Plips, ATTACK one randomly.
+     *  2. Otherwise, if energy >= 1, REPLICATE to a random empty square.
+     *  3. Otherwise, MOVE to an empty square.
+     *
+     *  Returns an object of type Action. See Action.java for the
+     *  scoop on how Actions work. See SampleCreature.chooseAction()
+     *  for an example to follow.
+     */
+
+      public Action chooseAction(Map<Direction, Occupant> neighbors) {
+        return new Action(Action.ActionType.STAY);
+      }
+
+
 
      
  }
