@@ -94,6 +94,13 @@ public class Plip extends Creature {
         if (empties.size() == 0){
             return new Action(Action.ActionType.STAY);
         }else if(energy > 1.0){
-            Direction replicateDir = 
+            Direction replicateDir = HugLifeUtils.randomEntry(empties);
+            return new Action(Action.ActionType.REPLICATE, replicateDir);
+        }else if(cloruses.size() > 0 && HugLifeUtils.random() >= 0.25){
+            Direction fleeDir = HugLifeUtils.randomEntry(empties);
+            return new Action(Action.ActionType.MOVE, fleeDir);
+        }else{
+            return new Action(Action.ActionType.STAY);
         }
+    }
 }

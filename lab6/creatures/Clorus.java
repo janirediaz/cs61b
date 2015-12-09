@@ -87,7 +87,16 @@ import java.util.List;
      */
 
       public Action chooseAction(Map<Direction, Occupant> neighbors) {
-        return new Action(Action.ActionType.STAY);
+        List<Direction> empties = getNeighborsOfType(neighbors, "empty");
+        List<Direction> plips = getNeighborsOfType(neighbors, "plip");
+        if(empties.size() == 0){
+            return new Action(Action.ActionType.STAY);
+        }else if(plips.size() > 0){
+            
+        }
+
+
+        
       }
 
 
