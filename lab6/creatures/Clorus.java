@@ -12,7 +12,7 @@ import java.util.List;
  *  @author Josh Hug
  */
 
- public class Clorus extends Creature{
+public class Clorus extends Creature{
  	/** red color. */
     private int r;
     /** green color. */
@@ -37,43 +37,43 @@ import java.util.List;
      /** Should return a color with red = 34, blue = 0, and green = 231.
      */
 
-     public Color color(){
+    public Color color(){
         b = (int)(10 * energy + 120);
         if(b > 231){
             b = 231;
         }
         return color(r, g, b);
-     }
+    }
 
      /** Eat an available Plip. */
-     public void attack(Creature c){
+    public void attack(Creature c){
         energy = energy + c.energy();
-     }
+    }
 
       /** Cloruses should lose 0.3 units of energy when moving. If you want to
      *  to avoid the magic number warning, you'll need to make a
      *  private static final variable. This is not required for this lab.
      */
 
-      public void move(){
+    public void move(){
         energy = energy - 0.2;
-      }
+    }
 
       /** Cloruses lose 0.1 units of energy when staying due to boredom. */
 
-      public void stay(){
+    public void stay(){
         energy = energy - 0.1;
-      }
+    }
 
       /** Cloruses and their offspring each get 50% of the energy, with none
      *  lost to the process. Now that's efficiency! Returns a baby
      *  Clorus.
      */
 
-      public Clorus replicate(){
+    public Clorus replicate(){
         energy = energy / 2;
         return new Clorus(energy);
-      }
+    }
 
       /** Cloruses take exactly the following actions based on NEIGHBORS:
      *  1. If no empty adjacent spaces, STAY.
@@ -86,20 +86,20 @@ import java.util.List;
      *  for an example to follow.
      */
 
-      public Action chooseAction(Map<Direction, Occupant> neighbors) {
+    public Action chooseAction(Map<Direction, Occupant> neighbors) {
         List<Direction> empties = getNeighborsOfType(neighbors, "empty");
         List<Direction> plips = getNeighborsOfType(neighbors, "plip");
         if(empties.size() == 0){
             return new Action(Action.ActionType.STAY);
         }else if(plips.size() > 0){
-            
-        }
-
-
-        
-      }
-
-
-
-     
- }
+            Direction attackDir = HugLifeUtils.randomEntry(plips);
+            return new Action(Action.ActionType.ATTACK, attackDir);
+        }else if(energy >= 1.0){
+            Direction replicateDir = HugLifeUtils.randomEntry(empties);
+            return new Action(Action.ActionType.REPLICATE, replicateDir);
+        }else{
+            Direction moveDir = HugLifeUtils.randomEntry(empties);
+            return new Action(Action.ActionType.MOVE, moveDir);
+        }    
+    }     
+}
