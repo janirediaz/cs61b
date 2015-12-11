@@ -47,6 +47,7 @@ public class Plip extends Creature {
 
     /** Do nothing with C, Plips are pacifists. */
     public void attack(Creature c) {
+        energy = energy + c.energy();
     }
 
     /** Plips should lose 0.15 units of energy when moving. If you want to
@@ -102,5 +103,10 @@ public class Plip extends Creature {
         }else{
             return new Action(Action.ActionType.STAY);
         }
+    }
+
+    public Clorus reply(){
+        energy = energy / 2;
+        return new Clorus(energy);
     }
 }
