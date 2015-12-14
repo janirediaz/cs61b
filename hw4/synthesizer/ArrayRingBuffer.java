@@ -15,6 +15,12 @@ public class ArrayRingBuffer extends AbstractBoundedQueue {
     //       first, last, and fillCount should all be set to 0. 
     //       this.capacity should be set appropriately. Note that the local variable
     //       here shadows the field we inherit from AbstractBoundedQueue.
+
+    this.capacity = capacity;
+    this.rb = new double[capacity];
+    this.fillCount = 0;
+    this.first = 0;
+    this.last = 0;
   }
 
   /** Adds x to the end of the ring buffer. If there is no room, then
