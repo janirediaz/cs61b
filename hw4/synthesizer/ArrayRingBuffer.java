@@ -29,6 +29,13 @@ public class ArrayRingBuffer extends AbstractBoundedQueue {
   public void enqueue(double x) {
     // TODO: Enqueue the item. Don't forget to increase fillCount and update last.
     // is there room?
+    if(isFull()){
+      throw new RuntimeException("Ring buffer overflow");
+    }
+
+    rb[last] = x;
+    fillCount = fillCount + 1;
+    last = (last + 1) % rb.length;
   }
 
   /** Dequeue oldest item in the ring buffer. If the buffer is empty, then
@@ -36,6 +43,14 @@ public class ArrayRingBuffer extends AbstractBoundedQueue {
     */
   public double dequeue() {
     // TODO: Dequeue the first item. Don't forget to decrease fillCount and update first.
+    if(isEmpty()){
+      throw new RuntimeException("Ring buffer underflow");
+    }
+
+    double temp = rb[first];
+    fillCount = fillCount - 1;
+    first = (first + 1) % rb.length;
+    return temp;
   }
 
   /** Return oldest item, but don't remove it. */
