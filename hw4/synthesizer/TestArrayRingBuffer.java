@@ -15,7 +15,7 @@ public class TestArrayRingBuffer {
         arb.enqueue(33.5);
         arb.dequeue();
         double a = arb.peek();
-        //assertEquals(34.5, a);
+        assertEquals(34.5, a);
         System.out.println(a);
     }
 
