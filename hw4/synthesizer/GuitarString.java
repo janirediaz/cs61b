@@ -1,5 +1,5 @@
 // Make sure to make this class a part of the synthesizer package
-//package <package name>;
+package synthesizer;
 
 //Make sure this class is public
 public class GuitarString {
@@ -11,6 +11,7 @@ public class GuitarString {
     
     /* Buffer for storing sound data. */
     private BoundedQueue buffer;
+    private int age = 0;
     
     /* Create a guitar string of the given frequency.  */
     public GuitarString(double frequency) {
@@ -18,6 +19,12 @@ public class GuitarString {
         //       cast the result of this divsion operation into an int. For better
         //       accuracy, use the Math.round() function before casting.
         //       Your buffer should be initially filled with zeros.
+        int capacity = (int)Math.round(SR/frequency);
+        buffer = new ArrayRingBuffer(capacity);
+
+        for(int i = 0; i < capacity; i++){
+            buffer.enqueue(0.0);
+        }
     }
     
     

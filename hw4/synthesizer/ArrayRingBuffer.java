@@ -1,5 +1,5 @@
 // Make sure to make this class a part of the synthesizer package
-//package <package name>;
+package synthesizer;
 
 public class ArrayRingBuffer extends AbstractBoundedQueue {
   /* Index for the next dequeue or peek. */
@@ -16,11 +16,9 @@ public class ArrayRingBuffer extends AbstractBoundedQueue {
     //       this.capacity should be set appropriately. Note that the local variable
     //       here shadows the field we inherit from AbstractBoundedQueue.
 
-    this.capacity = capacity;
     this.rb = new double[capacity];
-    this.fillCount = 0;
-    this.first = 0;
-    this.last = 0;
+    first = last = fillCount = 0;
+    this.capacity = capacity;
   }
 
   /** Adds x to the end of the ring buffer. If there is no room, then
@@ -56,6 +54,11 @@ public class ArrayRingBuffer extends AbstractBoundedQueue {
   /** Return oldest item, but don't remove it. */
   public double peek() {
     // TODO: Return the first item. None of your instance variables should change.
+    if(isEmpty()){
+      throw new RuntimeException("Ring buffer underflow");
+    }
+
+    return rb[first];
   }
 
 }
