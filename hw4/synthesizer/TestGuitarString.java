@@ -21,6 +21,10 @@ public class TestGuitarString {
             StdAudio.play(aString.sample());
             aString.tic();
         }
+
+        double CONCERT_A = 440.0;
+        GuitarString aString = new GuitarString(CONCERT_A);
+        aString.pluck();    
     }
 
     /** Calls tests for GuitarString. */

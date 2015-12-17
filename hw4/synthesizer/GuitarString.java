@@ -35,6 +35,12 @@ public class GuitarString {
         //       double r = Math.random() - 0.5;
         //
         //       Make sure that your random numbers are different from each other.
+        int N = buffer.capacity();
+        while(!buffer.isFull()){
+            double r = Math.random()-0.5;
+            buffer.dequeue();
+            buffer.enqueue(r);
+        }
     }
     
     /* Advance the simulation one time step by performing one iteration of
