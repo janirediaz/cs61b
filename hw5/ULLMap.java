@@ -1,4 +1,6 @@
 import java.util.Set; /* java.util.Set needed only for challenge problem. */
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /** A data structure that uses a linked list to store pairs of keys and values.
  *  Any key must appear at most once in the dictionary, but values may appear multiple
@@ -8,18 +10,23 @@ import java.util.Set; /* java.util.Set needed only for challenge problem. */
  *  For simplicity, you may assume that nobody ever inserts a null key or value
  *  into your map.
  */ 
-public class ULLMap { //FIX ME
+public class ULLMap<k,V> implements Map61B<K,V>, Iterable<K> { //FIX ME
     /** Keys and values are stored in a linked list of Entry objects.
       * This variable stores the first pair in this linked list. You may
       * point this at a sentinel node, or use it as a the actual front item
       * of the linked list. 
       */
-    private Entry front;
+    private Entry<K,V> front;
+    int size = 0;
+    public Iterator<K> iterator(){
+        return new ULLMapIter;
+    }
 
     @Override
-    public get(key) { //FIX ME
+    public V get(K key) { //FIX ME
     //FILL ME IN
-        return null; //FIX ME
+        Entry<K,V> curr = front.get(key);
+        return curr.val; //FIX ME
     }
 
     @Override
